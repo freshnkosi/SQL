@@ -1,0 +1,124 @@
+('Carter','Beyonce',0812277455,'thecarters@gmail.com','F','1974-05-28',7,3214,7),
+('Black','Kodak',0765643664,'kodakmusic@gmail.com','M','1994-09-15',8,2536,8),
+('Johnson','Dwayne',0764321567,'therock@gmail.com','M','1978-06-23',9,3456,9);
+
+
+('Topical blogs or Research'),
+('History'),
+('Theater'),
+('Volunteer Work'),
+('Sports'),
+('Travel');
+
+('Friend'),
+('A rich girlfriend'),
+('A tough girlfriend');
+
+(3214,'Cape Town','Western Cape'),
+(2536,'Polokwane','Limpopo'),
+(3456,'Pretoria','Gauteng');
+
+'Journalist'),
+('Cashier'),
+('Soldier');
+
+
+
+--INSERTING INTO THE INTERESTS TABLE
+INSERT INTO interests(interests)
+VALUES ('Travel,Nature,Art'),
+('Travel,Foreign languages,Outdoor Activities'),
+('Art such as painting or graphic design'),
+('Making or listening to music,Art,History'),
+('Bodybuilding,Outdoor Activities,Travel'),
+('Topical blogs or Research,History,Theater'),
+('Volunteer Work,Sports,Travel'),
+('Technology-related activities,Video games,Foreign languages');
+
+--INSERTING INTO THE SEEKING TABLE 
+INSERT INTO seeking(seeking)
+VALUES ('A crazy best-friend'),
+('Boyfriend'),
+('Girlfriend to match his interests'),
+('Wife'),
+('A Blesser'),
+('Younger boyfriend'),
+('Friend'),
+('A rich girlfriend'),
+('A tough girlfriend');
+
+
+--INSERTING INTO THE PROFESSION TABLE
+INSERT INTO profession (profession)
+VALUES ('Architect'),
+('Dentist'),
+('Teacher'),
+('Bartender'),
+('Waitress'),
+('Businesswoman'),
+('Journalist'),
+('Cashier'),
+('Soldier');
+
+--INSERTING INTO THE ZIP CODE
+INSERT INTO zip_code(zip_code,city,province)
+VALUES (1666,'Johannesburg','Gauteng'),
+(5324,'Durban','KwaZulu-Natal'),
+(4096,'East-london','Eastern-Cape'),
+(1632,'Bloemfontein','Free-state'),
+(3421,'Nelspruit','Mpumalanga'),
+(8721,'Kimberly','Northern Cape'),
+(3214,'Cape Town','Western Cape'),
+(2536,'Polokwane','Limpopo'),
+(3456,'Pretoria','Gauteng');
+
+
+--INNER JOIN 
+SELECT * FROM my_contacts AS mc  INNER JOIN interests ON mc.contact_id = interests.interest_id  INNER JOIN status ON mc.contact_id = status.status_id;
+
+--INSERTING INTO CONTACT_INTEREST TABLE
+INSERT INTO contacts_seeking(contact_id,seeking_id)
+VALUES (1,2),
+(2,6),
+(3,8),
+(4,3),
+(5,5),
+(6,7),
+(7,6),
+(8,4);
+
+--LEFT JOIN
+
+SELECT 
+mc.last_name,
+mc.first_name,
+mc.phone,
+mc.email,
+mc.gender,
+mc.birthday,
+prof.profession,
+z.city1,
+z.province,
+s.status
+
+FROM my_contacts AS mc
+
+LEFT JOIN profession AS prof
+ON mc.prof_id = prof.prof_id
+
+LEFT JOIN zip_code AS z
+ON mc.zip_code = z.zip_code
+
+LEFT JOIN status AS s
+ON mc.status_id = s.status_id;
+
+--INNER JOIN--
+
+SELECT *
+FROM my_contacts AS mc
+
+INNER JOIN interests
+ON mc.contact_id = interests.interest_id
+
+INNER JOIN status
+ON mc.contact_id = status.status_id;
