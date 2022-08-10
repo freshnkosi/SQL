@@ -1,0 +1,10 @@
+DELETE FROM cart_table WHERE cart_table.quantity <= 0;
+
+
+-- IF Quantity = 0 add product to Cart table --
+insert into cart_table (product_id, quantity)
+select 
+    1,1
+where not exists (
+    select 1 from cart_table where product_id = 1);
+--SHOW CART
